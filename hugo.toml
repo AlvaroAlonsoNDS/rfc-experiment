@@ -1,0 +1,20 @@
+baseURL = 'https://alvaroalonsonds.github.io/rfc-experiment/'
+languageCode = 'en-gb'
+title = 'RFC Viewer'
+
+enableEmoji = true
+
+[taxonomies]
+category = "categories"
+series = "series"
+tag = "tags"
+
+[params]
+titleEmoji = ":smile:"
+
+[Permalinks]
+post = "posts/:slug"
+
+[[params.menu]]
+name = "RFCs"
+url = "/"
