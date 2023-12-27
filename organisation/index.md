@@ -17,7 +17,7 @@
     <th>Status</th>
   </tr>
   {% for sitepage in sitepages %}
-    {% if sitepage.path contains 'domain1/team1' %}
+    {% if sitepage.path contains 'domain1/team1' and sitepage.visibility == 'public' %}
   <tr>
     <td><a href="/rfc-experiment{{ sitepage.url }}"> {{ sitepage.title }}</a></td>
     <td>{{ sitepage.author }}</td>
