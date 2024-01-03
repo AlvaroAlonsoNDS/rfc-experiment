@@ -33,4 +33,4 @@ jobs:
           rm -rf rfcs/index.md
           git add -A
           git commit -m "docs: auto update wiki"
-          git push4
+          git push
