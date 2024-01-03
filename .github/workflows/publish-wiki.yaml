@@ -1,0 +1,36 @@
+name: Publish wiki
+on:
+  push:
+    branches: [main]
+    paths:
+      - organisation/**
+      - .github/workflows/publish-wiki.yaml
+concurrency:
+  group: publish-wiki
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  deploy-to-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          path: repo
+      - name: Checkout wiki
+        uses: actions/checkout@v4
+        with:
+          repository: ${{github.repository}}.wiki
+          path: wiki
+      - name: Push to wiki
+        run: |
+          cd wiki
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          mkdir -p rfcs
+          cp -rf ../repo/organisation/** ./rfcs
+          rm -rf rfcs/index.md
+          git add -A
+          git commit -m "docs: auto update wiki"
+          git push4
